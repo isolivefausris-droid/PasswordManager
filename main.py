@@ -1,5 +1,5 @@
 from PyQt6 import QtCore,QtGui,QtWidgets
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QSize
 from classes.AuthManager import AuthManager
 from classes.PasswordManager import PasswordManager
 from windows.Ui_MainWindow import Ui_MainWindow
@@ -10,6 +10,7 @@ class AddPasswordDialog(QtWidgets.QDialog):
         super().__init__(parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+        self.setFixedSize(QSize(470,350))
         self.pm = password_manager 
 
         self.ui.GeneratePassword.clicked.connect(self._on_generate)
@@ -33,6 +34,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.PswdList.setStyleSheet("color: black; background-color: white;")
+        self.setFixedSize(QSize(950, 650)) 
 
         auth = AuthManager()
         self.pm = PasswordManager(auth._get_pswd())
