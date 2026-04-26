@@ -35,6 +35,11 @@ class PasswordManager:
         encrypted_password =  self.passwords[login]
         decrypted_password = self.cipher.decrypt(encrypted_password.encode())
         return decrypted_password.decode()
+    def list_services(self):
+        return list(self.passwords.keys())
+    def delete_pswd(self, login: str):
+        del self.passwords[login]
+        self._save()
     def _save(self):
         with open(self.path, 'w', encoding='utf-8') as file:
             data = {'salt':base64.urlsafe_b64encode(self.salt).decode(), 'passwords':self.passwords}
