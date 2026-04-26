@@ -4,9 +4,10 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 import base64
 import os
+import keyring
 
 class PasswordManager:
-    def __init__(self, master_password: str):
+    def __init__(self, master_password: str): 
         self.salt = None
         self.passwords = {}
         self.path = '../psw/container.json'
