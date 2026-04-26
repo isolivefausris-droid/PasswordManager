@@ -14,7 +14,10 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(929, 644)
         MainWindow.setAutoFillBackground(False)
-        MainWindow.setStyleSheet("background-color: #ffffff")
+        MainWindow.setStyleSheet("QWidget {\n"
+"    color: black;\n"
+"    background-color: #ffffff;\n"
+"}")
         MainWindow.setUnifiedTitleAndToolBarOnMac(False)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -25,7 +28,7 @@ class Ui_MainWindow(object):
         self.Image = QtWidgets.QLabel(parent=self.centralwidget)
         self.Image.setGeometry(QtCore.QRect(10, 150, 361, 461))
         self.Image.setText("")
-        self.Image.setPixmap(QtGui.QPixmap("../res/sabura.jpeg"))
+        self.Image.setPixmap(QtGui.QPixmap("img/sabura.jpeg"))
         self.Image.setScaledContents(True)
         self.Image.setWordWrap(False)
         self.Image.setOpenExternalLinks(False)

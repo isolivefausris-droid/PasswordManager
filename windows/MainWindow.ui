@@ -17,7 +17,10 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #ffffff</string>
+   <string notr="true">QWidget {
+    color: black;
+    background-color: #ffffff;
+}</string>
   </property>
   <property name="unifiedTitleAndToolBarOnMac">
    <bool>false</bool>
@@ -49,7 +52,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../res/sabura.jpeg</pixmap>
+     <pixmap>../sabura.jpeg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>

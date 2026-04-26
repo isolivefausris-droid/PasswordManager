@@ -5,12 +5,13 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 import base64
 import os
 import keyring
+import secrets
 
 class PasswordManager:
     def __init__(self, master_password: str): 
         self.salt = None
         self.passwords = {}
-        self.path = '../psw/container.json'
+        self.path = 'psw/container.json'
         if os.path.exists(self.path):
             self._load()
         else:
@@ -35,11 +36,13 @@ class PasswordManager:
         encrypted_password =  self.passwords[login]
         decrypted_password = self.cipher.decrypt(encrypted_password.encode())
         return decrypted_password.decode()
-    def list_services(self):
+    def list_logins(self):
         return list(self.passwords.keys())
     def delete_pswd(self, login: str):
         del self.passwords[login]
         self._save()
+    def pass_gen(self):
+        return secrets.token_urlsafe(16)
     def _save(self):
         with open(self.path, 'w', encoding='utf-8') as file:
             data = {'salt':base64.urlsafe_b64encode(self.salt).decode(), 'passwords':self.passwords}
